@@ -3,6 +3,7 @@ import {
   Route,
   BrowserRouter as Router,
 } from 'react-router-dom'
+import {Button, Icon, Footer, Navbar, NavItem} from 'react-materialize'
 import SearchAll from './Components/SearchAll'
 import './App.css';
 
@@ -48,7 +49,7 @@ class App extends Component {
       // console.log("function Object", this.state.programs)
     }
     organizeProgShort(json)
-    
+
     this.setState({
       mounted: true
     })
@@ -58,12 +59,18 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">{this.state.greeting}</h1>
-          </header>
+          <Navbar brand='Civil Searcher' right>
+            <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
+            <NavItem href='/search'>Search</NavItem>
+          </Navbar>
           <Route exact path="/search" render={() => (
             <SearchAll progs={this.state.allProgs} mounted={this.state.mounted} />
-            )}/>
+            )}
+          />
+            <Footer copyrights="2018 Copyright Text" className='example'>
+                <h5 className="white-text">Footer Content</h5>
+                <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </Footer>
         </div>
       </Router>
     );
