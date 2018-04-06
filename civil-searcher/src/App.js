@@ -13,22 +13,25 @@ class App extends Component {
     super(props)
     this.state = {
       greeting: 'Hello',
-      urls: {},
       programShort: {},
       allProgs: [],
+      mounted: false
     }
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     const response = await fetch('https://judahhh.herokuapp.com/')
     const json = await response.json()
-    let arrayOfProgs=(json)=>{
+    let makeProgramsArray=(json)=>{
+      let arrayOfProgs = []
       for(let i = 0; i < json.length; i++){
-        this.setState({allProgs: json[i].AgencyShort })
-        // console.log(json[i].ProgTitle);
+        arrayOfProgs.push(json[i].ProgTitle)
+        this.setState({allProgs: arrayOfProgs})
+        // console.log(this.state.allProgs);
       }
     }
-    arrayOfProgs(json)
+    makeProgramsArray(json)
+
     let organizeProgShort=(json)=>{
       let obj = {}
       let progs = json
@@ -45,7 +48,10 @@ class App extends Component {
       // console.log("function Object", this.state.programs)
     }
     organizeProgShort(json)
-
+    
+    this.setState({
+      mounted: true
+    })
   }
 
   render() {
@@ -56,7 +62,7 @@ class App extends Component {
             <h1 className="App-title">{this.state.greeting}</h1>
           </header>
           <Route exact path="/search" render={() => (
-            <SearchAll  />
+            <SearchAll progs={this.state.allProgs} mounted={this.state.mounted} />
             )}/>
         </div>
       </Router>
