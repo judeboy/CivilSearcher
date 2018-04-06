@@ -3,7 +3,7 @@ import {
   Route,
   BrowserRouter as Router,
 } from 'react-router-dom'
-import {Button, Icon, Footer, Navbar, NavItem} from 'react-materialize'
+import {Footer, Navbar, NavItem} from 'react-materialize'
 import SearchAll from './Components/SearchAll'
 import './App.css';
 
@@ -13,9 +13,9 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      greeting: 'Hello',
       programShort: {},
       allProgs: [],
+      allUrls: [],
       mounted: false
     }
   }
@@ -23,15 +23,25 @@ class App extends Component {
   async componentDidMount() {
     const response = await fetch('https://judahhh.herokuapp.com/')
     const json = await response.json()
-    let makeProgramsArray=(json)=>{
+    let makeProgramsArray = (json) => {
       let arrayOfProgs = []
       for(let i = 0; i < json.length; i++){
         arrayOfProgs.push(json[i].ProgTitle)
-        this.setState({allProgs: arrayOfProgs})
-        // console.log(this.state.allProgs);
       }
+      this.setState({allProgs: arrayOfProgs})
+      // console.log(this.state.allProgs);
     }
     makeProgramsArray(json)
+
+    let makeUrlsArray = (json) => {
+      let arrayOfUrls = []
+      for (let i = 0; i < json.length; i++){
+        arrayOfUrls.push(json[i].WebURL)
+      }
+      this.setState({allUrls: arrayOfUrls})
+      // console.log(this.state.allUrls);
+    }
+    makeUrlsArray(json)
 
     let organizeProgShort=(json)=>{
       let obj = {}
@@ -46,7 +56,7 @@ class App extends Component {
           this.setState({programShort: obj})
         }
       }
-      // console.log("function Object", this.state.programs)
+      // console.log("function Object", this.state.programShort.DOD)
     }
     organizeProgShort(json)
 
@@ -64,7 +74,7 @@ class App extends Component {
             <NavItem href='/search'>Search</NavItem>
           </Navbar>
           <Route exact path="/search" render={() => (
-            <SearchAll progs={this.state.allProgs} mounted={this.state.mounted} />
+            <SearchAll urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
             )}
           />
             <Footer copyrights="2018 Copyright Text" className='example'>
