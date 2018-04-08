@@ -54,4 +54,4 @@ class SearchAll extends Component {
 
   }
 }
-export default SearchAll;
+export default SearchAll

@@ -3,8 +3,10 @@ import {
   Route,
   BrowserRouter as Router,
 } from 'react-router-dom'
-import {Footer, Navbar, NavItem} from 'react-materialize'
+import {Button, Modal, Footer, Navbar, NavItem} from 'react-materialize'
 import SearchAll from './Components/SearchAll'
+import GettingStarted from './Components/GettingStarted'
+import About from './Components/About'
 import './App.css';
 
 
@@ -69,18 +71,29 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar brand='Civil Searcher' right>
-            <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-            <NavItem href='/search'>Search</NavItem>
+          <Navbar className='#37474f blue-grey darken-3' brand='Civil Searcher' right>
+            <NavItem href='/gettingstarted'>Getting started</NavItem>
+            <NavItem href='/search'>Search ALL Programs</NavItem>
+            <NavItem href='/hhs'>Health & Human Services</NavItem>
+            <NavItem href='/about'>About</NavItem>
+            
           </Navbar>
           <Route exact path="/search" render={() => (
             <SearchAll urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
             )}
           />
-            <Footer copyrights="2018 Copyright Text" className='example'>
-                <h5 className="white-text">Footer Content</h5>
-                <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            </Footer>
+          <Route exact path="/gettingstarted" render={() => (
+            <GettingStarted urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
+            )}
+          />
+          <Route exact path="/about" render={() => (
+            <About urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
+            )}
+          />
+          <Footer className='#37474f blue-grey darken-3' copyrights="2018 Copyright Text">
+              <h5 className="white-text">Footer Content</h5>
+              <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </Footer>
         </div>
       </Router>
     );
