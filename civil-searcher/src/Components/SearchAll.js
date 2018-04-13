@@ -5,10 +5,11 @@ import '../App.css'
 
 
 class SearchAll extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      search: ''
+      search: '',
+      favs: []
     }
   }
 
@@ -16,45 +17,12 @@ class SearchAll extends Component {
     this.setState({search: event.target.value})
   }
 
-  render() {
-    const getCircularReplacer = () => {
-      const seen = new WeakSet;
-      return (key, value) => {
-        if (typeof value === "object" && value !== null) {
-          if (seen.has(value)) {
-            return;
-          }
-          seen.add(value);
-        }
-        return value;
-      };
-    };
-    if(this.props.mounted === true){
-    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    // favorites.forEach(function(favorite) {
-    //   console.log(favorite);
-    //   document.getElementById(favorite).className = 'fav';
-    // });
-    let el = document.querySelector('.collection')
-    // console.log(el);
-    el.addEventListener('click', function(e) {
-      let item = e.target,
-          id = e.target.id,
-          index = favorites.indexOf(item);
-          // console.log(id);
-      if (!id) return;
-      if (index == -1) {
-        favorites.push(id);
-        item.className = 'fav';
-        // console.log(favorites);
-      } else {
-        favorites.splice(index, 1);
-        item.className = '';
-      }
-      localStorage.setItem('favorites', JSON.stringify(favorites, getCircularReplacer()));
-    });
-    }
+  updateFavs(event){
+    this.setState({favs: [...this.state.favs, event.target]})
+    console.log(this.state.favs);
+  }
 
+  render() {
     let progs = []
     let urls = this.props.urls
     let progsAndUrls = []
@@ -70,9 +38,7 @@ class SearchAll extends Component {
         progsAndUrls.push(arr)
       }
     }
-    var ID = function () {
-      return Math.random() * 100;
-    };
+
     return (
       <Collection className='collection' >
         <h4>Search All Programs</h4>
@@ -89,7 +55,7 @@ class SearchAll extends Component {
 
         {progsAndUrls.map((ele,i) => {
           return(
-            <CollectionItem id={ID()} className='collectionItem' key={i}>
+            <CollectionItem className='collectionItem' key={i} onClick={this.updateFavs.bind(this)}>
               <div>{ele[0]}</div><br></br>
               <a target="_blank" href={`${ele[1]}`}>
                 <Button>Learn More</Button>

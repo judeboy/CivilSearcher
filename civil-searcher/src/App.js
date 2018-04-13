@@ -72,15 +72,17 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar id='navbar' className='#37474f blue-grey darken-3' brand='Civil Searcher' right>
-              <NavItem href='/favorites'>Favorites</NavItem>
+              {/* <NavItem href='/favorites'>Favorites</NavItem> */}
               <NavItem href='/search'>Search All Programs</NavItem>
               <NavItem href='/'>Home</NavItem>
           </Navbar>
-            <p>Funding at your Fingertips!</p>
+          <br></br>
+            
           <Route exact path="/" render={() => (
             <Chart />
             )}
           />
+          <br></br><br></br>
           <Route exact path="/search" render={() => (
             <SearchAll urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
             )}
@@ -90,7 +92,7 @@ class App extends Component {
             )}
           />
           <Footer className='#37474f blue-grey darken-3' copyrights="2018 Copyright Judah Trimmer">
-            <h6 className="white-text">Civil Searcher</h6>
+            {/* <h6 className="white-text">Civil Searcher</h6> */}
           </Footer>
         </div>
       </Router>
