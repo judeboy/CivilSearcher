@@ -3,10 +3,10 @@ import {
   Route,
   BrowserRouter as Router,
 } from 'react-router-dom'
-import {Button, Modal, Footer, Navbar, NavItem} from 'react-materialize'
+import {Footer, Navbar, NavItem} from 'react-materialize'
 import SearchAll from './Components/SearchAll'
 import GettingStarted from './Components/GettingStarted'
-import About from './Components/About'
+import Chart from './Components/Chart'
 import './App.css';
 
 
@@ -18,7 +18,7 @@ class App extends Component {
       programShort: {},
       allProgs: [],
       allUrls: [],
-      mounted: false
+      mounted: false,
     }
   }
 
@@ -71,13 +71,17 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar className='#37474f blue-grey darken-3' brand='Civil Searcher' right>
-            <NavItem href='/gettingstarted'>Getting started</NavItem>
-            <NavItem href='/search'>Search ALL Programs</NavItem>
-            <NavItem href='/hhs'>Health & Human Services</NavItem>
-            <NavItem href='/about'>About</NavItem>
-            
+          <Navbar id='navbar' className='#37474f blue-grey darken-3' brand='Civil Searcher' right>
+              {/* <NavItem href='/gettingstarted'>Getting started</NavItem> */}
+              <NavItem href='/search'>Search All Programs</NavItem>
+              {/* <NavItem href='/hhs'>Health & Human Services</NavItem> */}
+              <NavItem href='/'>Home</NavItem>
           </Navbar>
+            <p>Funding at your Fingertips!</p>
+          <Route exact path="/" render={() => (
+            <Chart />
+            )}
+          />
           <Route exact path="/search" render={() => (
             <SearchAll urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
             )}
@@ -86,13 +90,8 @@ class App extends Component {
             <GettingStarted urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
             )}
           />
-          <Route exact path="/about" render={() => (
-            <About urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
-            )}
-          />
-          <Footer className='#37474f blue-grey darken-3' copyrights="2018 Copyright Text">
-              <h5 className="white-text">Footer Content</h5>
-              <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          <Footer className='#37474f blue-grey darken-3' copyrights="2018 Copyright Judah Trimmer">
+            <h6 className="white-text">Civil Searcher</h6>
           </Footer>
         </div>
       </Router>

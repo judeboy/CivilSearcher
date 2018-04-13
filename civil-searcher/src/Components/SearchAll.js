@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Collection, CollectionItem} from 'react-materialize'
+import { Modal, Button, Collection, CollectionItem} from 'react-materialize'
+import '../App.css'
 
 
 
@@ -32,21 +33,28 @@ class SearchAll extends Component {
     }
 
     return (
-      <Collection header="Search All Programs">
-        <input type="text" placeholder="Search by Keyword"
+      <Collection className='collection' >
+        <h4>Search All Programs</h4>
+        <Modal
+          header='Help Searching'
+          trigger={<Button>Help</Button>}>
+          <p>Type any word into the search bar to generate a list of programs that contain that word. For example: type 'grant' to see a list of all of the programs that offer grants. When you see a program that may fit your needs, click the Learn More button to be routed to the .gov website for more information regarding that program. </p>
+        </Modal>
+        <input s={6} type="text"
+          placeholder='Search by Keyword'
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
         />
+
         {progsAndUrls.map((ele,i) => {
           return(
-            <CollectionItem key={i}>
+            <CollectionItem className='collectionItem' key={i}>
               <div>{ele[0]}</div><br></br>
               <a target="_blank" href={`${ele[1]}`}>
                 <Button>Learn More</Button>
               </a>
               <br></br>
             </CollectionItem>
-
           )
         })}
      </Collection>
