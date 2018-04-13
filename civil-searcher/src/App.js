@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import {Footer, Navbar, NavItem} from 'react-materialize'
 import SearchAll from './Components/SearchAll'
-import GettingStarted from './Components/GettingStarted'
+import Favorites from './Components/Favorites'
 import Chart from './Components/Chart'
 import './App.css';
 
@@ -72,9 +72,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar id='navbar' className='#37474f blue-grey darken-3' brand='Civil Searcher' right>
-              {/* <NavItem href='/gettingstarted'>Getting started</NavItem> */}
+              <NavItem href='/favorites'>Favorites</NavItem>
               <NavItem href='/search'>Search All Programs</NavItem>
-              {/* <NavItem href='/hhs'>Health & Human Services</NavItem> */}
               <NavItem href='/'>Home</NavItem>
           </Navbar>
             <p>Funding at your Fingertips!</p>
@@ -86,8 +85,8 @@ class App extends Component {
             <SearchAll urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
             )}
           />
-          <Route exact path="/gettingstarted" render={() => (
-            <GettingStarted urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
+          <Route exact path="/favorites" render={() => (
+            <Favorites />
             )}
           />
           <Footer className='#37474f blue-grey darken-3' copyrights="2018 Copyright Judah Trimmer">
