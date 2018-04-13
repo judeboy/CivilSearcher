@@ -76,13 +76,10 @@ class App extends Component {
               <NavItem href='/search'>Search All Programs</NavItem>
               <NavItem href='/'>Home</NavItem>
           </Navbar>
-          <br></br>
-            
           <Route exact path="/" render={() => (
             <Chart />
             )}
           />
-          <br></br><br></br>
           <Route exact path="/search" render={() => (
             <SearchAll urls={this.state.allUrls} progs={this.state.allProgs} mounted={this.state.mounted} />
             )}
@@ -92,7 +89,6 @@ class App extends Component {
             )}
           />
           <Footer className='#37474f blue-grey darken-3' copyrights="2018 Copyright Judah Trimmer">
-            {/* <h6 className="white-text">Civil Searcher</h6> */}
           </Footer>
         </div>
       </Router>

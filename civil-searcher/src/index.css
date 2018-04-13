@@ -10,6 +10,7 @@ body {
  height: 100%;
  position: relative;
  background-image: url(images/capitol.png);
+ background-repeat: fill;
 }
 
 

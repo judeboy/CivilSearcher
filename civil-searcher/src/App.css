@@ -14,6 +14,7 @@
 .collectionItem{
   color: white;
   background-image: url(images/random.jpg);
+  background-position: center;
 }
 
 input[type=text] {
