@@ -58,7 +58,7 @@ class Chart extends Component {
         />
 
         <div className='intro'>The US Government has thousands of programs that provide funding and monitary assistance to both individuals and businesses. The problem is that the .GOV sites rarely provide ease of access. What Civil Searcher aims to do is help those in need to find financial assistance by providing a central database to access and apply for government aid.</div>
-        <div><br></br>
+        <div className='buttonPadding'><br></br>
         <a className="waves-effect waves-light btn green" href='/search'>Find Funding!</a>
         </div>
       </div>
