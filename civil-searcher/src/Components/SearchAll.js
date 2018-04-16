@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Collection, CollectionItem} from 'react-materialize'
+import { Preloader, Col, Modal, Button, Collection, CollectionItem} from 'react-materialize'
 import '../App.css'
 
 
@@ -9,7 +9,8 @@ class SearchAll extends Component {
     super(props)
     this.state = {
       search: '',
-      favs: []
+      favs: [],
+      hidden: false
     }
   }
 
@@ -22,10 +23,15 @@ class SearchAll extends Component {
     console.log(this.state.favs);
   }
 
+  setFavsState(favs){
+    this.setSet({favs: favs})
+  }
+
   render() {
     let progs = []
     let urls = this.props.urls
     let progsAndUrls = []
+    let hidden = false;
     if(this.props.mounted === true){
       progs = this.props.progs.filter(
         (program) => {
@@ -38,7 +44,10 @@ class SearchAll extends Component {
         progsAndUrls.push(arr)
       }
     }
-
+    let loader = document.getElementById('preloader')
+    if(this.props.mounted === true){
+      loader.style.display = 'none'
+    }
     return (
       <Collection className='collection' >
         <h4>Search All Programs</h4>
@@ -50,22 +59,27 @@ class SearchAll extends Component {
         />
         <Modal
           header='Help Searching'
-          trigger={<Button className='red'>Need Help?</Button>}>
-          <p>Type any word into the search bar to generate a list of programs that contain that word. For example: type 'women' to see a list of all of the programs geared toward women. When you see a program that may fit your needs, click the Learn More button to be routed to the .gov website for more information regarding that program. </p>
+          trigger={<Button className='waves-effect waves-light btn-small red'>Need Help?</Button>}>
+          <p>Type any word into the search bar to generate a list of programs that contain that word. For example: type 'GRANTS' to see a list of programs that provide grants. Click the Learn More button to be routed to the .gov website for more information regarding that program. </p>
         </Modal>
         <br></br>
+        <Col s={4} id='preloader'>
+          <Preloader hidden={hidden} size='big'/>
+        </Col>
         {progsAndUrls.map((ele,i) => {
           return(
             <CollectionItem className='collectionItem' key={i} onClick={this.updateFavs.bind(this)}>
               <div>{ele[0]}</div><br></br>
               <a target="_blank" href={`${ele[1]}`}>
-                <Button>Learn More</Button>
+                <Button className='#689f38 light-green darken-2'>Learn More</Button>
               </a>
               <br></br>
               <div><br></br></div>
             </CollectionItem>
           )
         })}
+        <CollectionItem className='invisible'><br></br>
+        <div><br></br></div></CollectionItem>
      </Collection>
     );
 

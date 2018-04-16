@@ -4,17 +4,19 @@ import React, { Component } from 'react'
 
 
 class Favorites extends Component {
+
+
   constructor(props){
     super(props)
     this.state = {
-      isLoading: true,
+      favs:[],
     }
   }
 
   render(){
-
+    
   return(
-    <section favs={this.props.favs}></section>)
+    <section></section>)
   }
 }
 export default Favorites;

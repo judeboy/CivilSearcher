@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Modal, Button} from 'react-materialize'
 import {Bar} from 'react-chartjs-2'
 import '../App.css';
 
@@ -15,12 +14,12 @@ class Chart extends Component {
               label: 'Programs per Gov. Agency',
               data: [445, 230, 55, 100, 390],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)',
+                  'rgba(255, 206, 86, 0.7)',
+                  'rgba(75, 192, 192, 0.7)',
+                  'rgba(153, 102, 255, 0.7)',
+                  'rgba(255, 159, 64, 0.7)'
               ],
               borderColor: [
                   'rgba(255,99,132,1)',
@@ -58,9 +57,9 @@ class Chart extends Component {
         	}}
         />
 
-        <div className='intro'>The US Government has thousands of programs that provide funding to both individuals and businesses for a myriad of reasons, from education and business loans to low-income housing assistance. The problem is that navigating the .GOV sites is treacherous and rarely provides ease of access. What Civil Searcher aims to do is streamline the process by providing a central database to access and apply for government aid.</div>
+        <div className='intro'>The US Government has thousands of programs that provide funding and monitary assistance to both individuals and businesses. The problem is that the .GOV sites rarely provide ease of access. What Civil Searcher aims to do is help those in need to find financial assistance by providing a central database to access and apply for government aid.</div>
         <div><br></br>
-        <a class="waves-effect waves-light btn green" href='/search'>Find Funding!</a>
+        <a className="waves-effect waves-light btn green" href='/search'>Find Funding!</a>
         </div>
       </div>
     );

@@ -18,16 +18,21 @@
 }
 
 input[type=text] {
-  color: red;
+  color: black;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
 
 ::placeholder {
-    color: red;
+    color: black;
 }
 
 .intro{
   font-size: 140%;
+}
+
+.invisible {
+    display: none;
+    visibility: hidden; 
 }
