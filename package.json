@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv-keywords": "^3.1.0",
     "chart.js": "^2.7.2",
     "react": "^16.3.2",
     "react-c3": "^1.0.0",
@@ -10,6 +11,7 @@
     "react-chartjs-2": "^2.7.0",
     "react-dom": "^16.3.1",
     "react-materialize": "^2.1.4",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-scroll": "^0.4.4",
     "react-scripts": "1.1.4",
