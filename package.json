@@ -5,6 +5,9 @@
   "dependencies": {
     "ajv-keywords": "^3.1.0",
     "chart.js": "^2.7.2",
+    "install": "^0.11.0",
+    "material-ui": "^0.20.0",
+    "npm": "^5.8.0",
     "react": "^16.3.2",
     "react-c3": "^1.0.0",
     "react-c3js": "^0.1.20",
