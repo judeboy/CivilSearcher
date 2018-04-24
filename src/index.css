@@ -7,10 +7,15 @@
 }
 html,
 body {
- height: 100%;
- position: relative;
- background-image: url(images/capitol.png);
- background-repeat: fill;
+  height: 100%;
+  position: relative;
+  background-image: url(images/capitol.png);
+  background-repeat: no-repeat;
+  background-size:cover;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
