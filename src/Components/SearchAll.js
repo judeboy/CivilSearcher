@@ -79,7 +79,7 @@ class SearchAll extends Component {
           )
         })}
         <CollectionItem className='invisible'><br></br>
-        <div><br></br></div></CollectionItem>
+        <div><br></br><br></br></div></CollectionItem>
      </Collection>
     );
 
